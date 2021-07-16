@@ -10,6 +10,12 @@ const port = 5000;
 app.use(express.json());
 app.use('/admin', adminRouter);
 
+app.get('/ip', (req, res) => {
+  const { ip } = req;
+  const ipa = ip.substr(ip.lastIndexOf(':') + 1);
+  res.send(ipa);
+});
+
 app.listen(port, () => {
   logger.info(`Listening on port ${port}`);
 });

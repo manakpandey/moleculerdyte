@@ -46,7 +46,17 @@ const update = async ({ id, url }: { id: string; url: string }) => {
   }
 };
 
-const getAll = async () => WebhookModel.find({});
+const getAll = async () => {
+  interface IResp {
+    id: string;
+    targetUrl: string;
+  }
+
+  const all = await WebhookModel.find({});
+  const resp: IResp[] = [];
+  all.map((r: IResp) => resp.push((({ id, targetUrl }) => ({ id, targetUrl }))(r)));
+  return resp;
+};
 
 export default {
   doesExist,
