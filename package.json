@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "moleculer": "^0.14.15",
+    "mongoose": "^5.13.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
