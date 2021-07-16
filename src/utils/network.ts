@@ -8,7 +8,7 @@ async function postWithRetries(
 ) {
   try {
     logger.info(`Sending POST request to ${url} `);
-    await axios.post(url, { ...data, timestamp: new Date().getTime() });
+    await axios.post(url, { ...data, timestamp: new Date().getTime() }, { timeout: 1000 });
   } catch (e) {
     logger.error(`${url} responded with status ${e.response?.status}`);
     if (numRetries > 0) {
