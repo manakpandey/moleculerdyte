@@ -36,14 +36,14 @@ router.post('/delete', async (req, res) => {
 });
 
 router.post('/update', async (req, res) => {
-  const { id, targetUrl } = req.body;
-  if (!id || !targetUrl) {
+  const { id, newTargetUrl } = req.body;
+  if (!id || !newTargetUrl) {
     res.sendStatus(400);
     return;
   }
   try {
     await Broker.start();
-    const reg:number = await Broker.call('webhooks.update', { id, targetUrl });
+    const reg:number = await Broker.call('webhooks.update', { id, newTargetUrl });
     res.sendStatus(reg);
   } catch (e) {
     logger.error(e);

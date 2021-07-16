@@ -1,4 +1,5 @@
 import { ServiceBroker } from 'moleculer';
+import logger from '../utils/logger';
 import webhook from '../persistence/webhooks';
 import network from '../utils/network';
 
@@ -22,7 +23,7 @@ broker.createService({
     async update(ctx) {
       const res = await webhook.update({
         id: ctx.params.id,
-        url: ctx.params.targetUrl,
+        url: ctx.params.newTargetUrl,
       });
       return res ? 200 : 404;
     },
