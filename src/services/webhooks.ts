@@ -1,5 +1,4 @@
 import { ServiceBroker } from 'moleculer';
-import logger from '../utils/logger';
 import webhook from '../persistence/webhooks';
 import network from '../utils/network';
 
